@@ -5,22 +5,20 @@ import com.kodilla.testing.calculator.Calculator;
 public class TestingMain {
     public static void main(String[] args) {
 
-        Calculator calculator = new Calculator(7,7);
+        Calculator calculator = new Calculator();
 
-        int resultAdd = calculator.add();
-        if (resultAdd > 10) {
-            System.out.println("The count is greater than 10");
+        int resultAdd = calculator.add(7,3);
+        if (resultAdd == 10) {
+            System.out.println("Test 1 OK");
         } else {
-            System.out.println("The count is smaller or equal to 10!");
+            System.out.println("Error 1");
         }
 
-        int resultSub = calculator.substract();
-        if (resultSub > 0) {
-            System.out.println("The count is positive");
-        } else if (resultSub == 0) {
-            System.out.println("The count is  equal to 0");
-        } else {
-            System.out.println("The count is negative");
+        int resultSub = calculator.substract(100,10);
+        if (resultSub == 90) {
+            System.out.println("Test 2 OK");
+        }  else {
+            System.out.println("Error 2");
         }
     }
 }

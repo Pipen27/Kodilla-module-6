@@ -1,8 +1,8 @@
 package com.kodilla.testing.collection;
 
-import com.kodilla.testing.collection.OddNumbersExterminator;
 import org.junit.jupiter.api.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CollectionTestSuite {
@@ -35,7 +35,7 @@ public class CollectionTestSuite {
         OddNumbersExterminator odd = new OddNumbersExterminator();
         Boolean expectedResult = true;
         //When
-        Boolean empty = odd.isEmpty()
+        Boolean empty = odd.isEmpty();
 
         //Then
         Assertions.assertEquals(expectedResult, empty);
@@ -51,12 +51,26 @@ public class CollectionTestSuite {
         //Given
         OddNumbersExterminator odd = new OddNumbersExterminator();
         Boolean expectedResult = true;
-        boolean testResult;
+        Boolean testResult;
+        testResult = true;
+        List<Integer> numbers = new ArrayList<>();
+        numbers.add(1);
+        numbers.add(2);
+
         //When
-        List<Integer> odds = odd.exterminate();
-        if(odds % 2 == 0){
-            return testResult;
+        List<Integer> odds = odd.exterminate(numbers);
+
+        {for(int oddsNr : odds)
+            if (oddsNr % 2 == 0) {
+                testResult = true;
+               }
+
+             else {
+                testResult = false;
+            }
         }
+
+
         //Then
         Assertions.assertEquals(expectedResult, testResult);
     }

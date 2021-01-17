@@ -20,41 +20,55 @@ public class ForumUser {                                       // [5]
     }                                                           // [13]
 
     public void addPost(String author, String postBody) {       // [14]
-        // do nothing
+        ForumPost thePost = new ForumPost(postBody, author);
+        posts.add(thePost);
     }                                                           // [15]
 
     public void addComment(ForumPost thePost, String author, String commentBody) {   // [16]
-        // do nothing
+        ForumComment theComment = new ForumComment (thePost, commentBody, author);
+        comments.add(theComment);
     }                                                           // [17]
 
     public int getPostsQuantity() {                             // [18]
-        // return 100 temporarily
-        return 100;                                              // [19]
+        return posts.size();                                              // [19]
     }                                                           // [20]
 
     public int getCommentsQuantity() {                          // [21]
-        // return 100 temporarily
-        return 100;                                              // [22]
+
+        return comments.size();                                              // [22]
     }                                                           // [23]
 
     public ForumPost getPost(int postNumber) {                  // [24]
-        // returning null means that the operation was unsuccessful
-        return null;                                             // [25]
+        if (postNumber >= 0 && postNumber < posts.size()) {
+            return posts.get(postNumber);
+        }
+        return null;                                           // [25]
     }                                                           // [26]
 
     public ForumComment getComment(int commentNumber) {         // [27]
-        // returning null means that the operation was unsuccessful
-        return null;                                             // [28]
+        ForumComment theComment = null;
+        if (commentNumber >= 0 && commentNumber < comments.size()) {
+            theComment = comments.get(commentNumber);
+        }
+        return theComment;                                            // [28]
     }                                                           // [29]
 
     public boolean removePost(ForumPost thePost) {              // [30]
-        // return true temporarily
-        return true;                                             // [31]
+        boolean result = false;
+        if (posts.contains(thePost)) {
+            posts.remove(thePost);
+            result = true;
+        }
+        return result;                                            // [31]
     }                                                           // [32]
 
     public boolean removeComment(ForumComment theComment) {     // [33]
-        // return true temporarily
-        return true;                                             // [34]
+        boolean result = false;
+        if (comments.contains(theComment)) {
+            comments.remove(theComment);
+            result = true;
+        }
+        return result;                                          // [34]
     }                                                           // [35]
 
     public String getName() {                                   // [36]

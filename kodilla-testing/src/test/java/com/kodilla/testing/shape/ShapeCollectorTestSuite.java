@@ -2,7 +2,7 @@ package com.kodilla.testing.shape;
 
 import org.junit.jupiter.api.*;
 
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ShapeCollectorTestSuite {
@@ -46,15 +46,17 @@ public class ShapeCollectorTestSuite {
             void testRemoveFigure() {
                 //Given
                 ShapeCollector shapeCollector = new ShapeCollector();
+                Circle shape = new Circle("Circle", 9);
+                shapeCollector.addFigure(shape);
 
-                shapeCollector.addFigure(new Square("Square", 7));
 
                 //When
-                boolean result = shapeCollector.removeFigure(shapeCollector);
+               shapeCollector.removeFigure(shape);
 
                 //Then
-                Assertions.assertTrue(result);
+
                 Assertions.assertEquals(0, shapeCollector.getShapesQuantity());
+
             }
 
 
@@ -74,12 +76,15 @@ public class ShapeCollectorTestSuite {
                 shapeCollector.addFigure(shape);
 
                 //When
-                String retrievedPost;
+                Shape retrievedPost;
                 retrievedPost = shapeCollector.getFigure(0);
 
                 //Then
-                Assertions.assertEquals(shape.getShapeName("Circle"), retrievedPost);
+                Assertions.assertEquals(shape, retrievedPost);
             }
+
+
+
 
             @Test
             void testShowFigures() {
@@ -88,14 +93,20 @@ public class ShapeCollectorTestSuite {
                 Circle shape = new Circle("Circle", 9);
                 shapeCollector.addFigure(new Circle("Circle", 9));
 
-                shapeCollector.showFigures();
+
+
 
                 //When
-                List<String> retrievedPost;
-                retrievedPost = Collections.singletonList("Circle");
+                List<Shape> retrievedShape;
+                retrievedShape = shapeCollector.showFigures();
+
 
                 //Then
-                Assertions.assertEquals(shapeCollector.showFigures(), retrievedPost);
+                List<Shape> expectedShapes = new ArrayList<>();
+                expectedShapes.add(shape);
+
+
+                Assertions.assertEquals(expectedShapes, retrievedShape);
             }
         }
     }

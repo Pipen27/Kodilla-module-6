@@ -2,33 +2,49 @@ package com.kodilla.testing.shape;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class ShapeCollector {
 
-    private List<String> shapes = new ArrayList<>();
+    private List<Shape> shapes = new ArrayList<>();
 
-    public String addFigure (Shape shape){
-        return shape.getShapeName("Circle") +
-                shapes.add(shape.getShapeName("Circle"));
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ShapeCollector that = (ShapeCollector) o;
+        return shapes.equals(that.shapes);
     }
 
-    public boolean removeFigure (ShapeCollector shapeCollector) {
-        boolean result = false;
-        if (shapes.contains("Circle")) {
-            shapes.remove("Circle");
-            result = true;
+    @Override
+    public int hashCode() {
+        return Objects.hash(shapes);
+    }
+
+    public boolean addFigure (Shape shape){
+        return shapes.add(shape);
+    }
+
+    public boolean removeFigure (Shape shape) {
+
+        if (shapes.size() > 0) {
+            shapes.remove(shape);
+
         }
-        return result;
+        return  shapes.remove(shape);
     }
 
-    public String getFigure (int n) {
+    public Shape getFigure (int n) {
         if (n >= 0 && n < shapes.size()) {
             return shapes.get(n);
         }
         return null;
     }
 
-    public List<String> showFigures () {
+
+    public List<Shape> showFigures () {
+
         if (shapes.size() > 0){
             return shapes;
         }

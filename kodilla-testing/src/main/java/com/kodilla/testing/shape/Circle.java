@@ -27,7 +27,7 @@ public class Circle implements Shape {
         return field;
     }
 
-    public String getShapeName (String name) {
+    public String getShapeName () {
         return name;
 
     }

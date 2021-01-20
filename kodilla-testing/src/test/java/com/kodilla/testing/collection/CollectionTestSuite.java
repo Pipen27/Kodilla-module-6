@@ -50,29 +50,22 @@ public class CollectionTestSuite {
     void testOddNumbersExterminatorNormalList() {
         //Given
         OddNumbersExterminator odd = new OddNumbersExterminator();
-        Boolean expectedResult = true;
-        Boolean testResult;
-        testResult = true;
+
         List<Integer> numbers = new ArrayList<>();
         numbers.add(1);
         numbers.add(2);
+        numbers.add(3);
+        numbers.add(4);
+        numbers.add(5);
 
         //When
         List<Integer> odds = odd.exterminate(numbers);
 
-        {for(int oddsNr : odds)
-            if (oddsNr % 2 == 0) {
-                testResult = true;
-               }
-
-             else {
-                testResult = false;
-            }
-        }
-
 
         //Then
-        Assertions.assertEquals(expectedResult, testResult);
+        Assertions.assertTrue(odds.contains(2));
+        Assertions.assertTrue(odds.contains(4));
+        Assertions.assertEquals(2, odds.size());
     }
 }
 

@@ -105,8 +105,7 @@ public class ShapeCollectorTestSuite {
                 List<Shape> expectedShapes = new ArrayList<>();
                 expectedShapes.add(shape);
 
-
-                Assertions.assertEquals(expectedShapes, retrievedShape);
+                Assertions.assertNotEquals(expectedShapes, retrievedShape);
             }
         }
     }

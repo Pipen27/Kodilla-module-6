@@ -41,7 +41,7 @@ public class StatisticsCounter {
     }
 
 
-    int commentsCount(){
+    int commentsCount(Statistics statistics){
 
         int sumComments = 0;
         int resultList = statistics.

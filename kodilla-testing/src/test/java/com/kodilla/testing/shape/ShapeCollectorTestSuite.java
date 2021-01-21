@@ -2,9 +2,6 @@ package com.kodilla.testing.shape;
 
 import org.junit.jupiter.api.*;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class ShapeCollectorTestSuite {
 
 
@@ -85,6 +82,7 @@ public class ShapeCollectorTestSuite {
 
 
 
+            }
 
             @Test
             void testShowFigures() {
@@ -97,15 +95,16 @@ public class ShapeCollectorTestSuite {
 
 
                 //When
-                List<Shape> retrievedShape;
-                retrievedShape = shapeCollector.showFigures();
+                Shape retrievedShape;
+                retrievedShape = shapeCollector.showFigures().get(0);
 
 
                 //Then
-                List<Shape> expectedShapes = new ArrayList<>();
-                expectedShapes.add(shape);
 
-                Assertions.assertNotEquals(expectedShapes, retrievedShape);
+
+                Assertions.assertEquals(retrievedShape, shape);
+
+
             }
         }
-    }
+

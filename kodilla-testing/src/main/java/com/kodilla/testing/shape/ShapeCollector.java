@@ -9,13 +9,7 @@ public class ShapeCollector {
     private List<Shape> shapes = new ArrayList<>();
 
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        ShapeCollector that = (ShapeCollector) o;
-        return shapes.equals(that.shapes);
-    }
+
 
     @Override
     public int hashCode() {
@@ -28,10 +22,6 @@ public class ShapeCollector {
 
     public boolean removeFigure (Shape shape) {
 
-        if (shapes.size() > 0) {
-            shapes.remove(shape);
-
-        }
         return  shapes.remove(shape);
     }
 
@@ -44,6 +34,8 @@ public class ShapeCollector {
 
 
     public List<Shape> showFigures () {
+
+
 
         if (shapes.size() > 0){
             return shapes;

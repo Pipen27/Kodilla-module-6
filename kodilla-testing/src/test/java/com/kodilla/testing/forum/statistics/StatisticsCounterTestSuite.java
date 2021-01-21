@@ -82,6 +82,8 @@ public class StatisticsCounterTestSuite {
 
         List<String> resultListOf100Users = generateListOfNUsers(100);
 
+        System.out.println(statisticsCounter.numberOfUsers);
+
 
         when(statisticsMock.usersNames()).thenReturn(resultListOf100Users);
 
@@ -122,6 +124,7 @@ public class StatisticsCounterTestSuite {
         int resultNumberOfPosts = statisticsCounter.numberOfPosts;
         resultNumberOfPosts = 1000;
 
+
         when(statisticsMock.postsCount()).thenReturn(resultNumberOfPosts);
 
         // When
@@ -129,6 +132,7 @@ public class StatisticsCounterTestSuite {
 
         // Then
         assertEquals(1000, theListOfUsers);
+
 
 
     }

@@ -11,7 +11,7 @@ public final class Forum {
         theUsersList.add(new ForumUser(1, "John90", 'M',
                 1990, 8, 17,33));
         theUsersList.add(new ForumUser(2, "Focus", 'M',
-                1990, 9, 27,114));
+                2005, 9, 27,114));
         theUsersList.add(new ForumUser(3, "Aline94", 'F',
                 1966, 11, 4,13));
         theUsersList.add(new ForumUser(4, "Catty4", 'F',
@@ -25,6 +25,9 @@ public final class Forum {
         theUsersList.add(new ForumUser(8, "007FemaleAgent", 'F',
                 2004, 10, 11,133));
 
+    }
+    public List<ForumUser> getUserList(){
+        return new ArrayList<>(theUsersList);
     }
 
 }

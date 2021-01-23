@@ -102,7 +102,7 @@ public class ShapeCollectorTestSuite {
                 //Then
 
 
-                Assertions.assertNotEquals(retrievedShape, shape);
+                Assertions.assertEquals(retrievedShape, shape);
 
 
             }

@@ -54,31 +54,29 @@ public class StatisticsCounter {
 
     }
 
-    Object calculateAdvStatistics (Statistics statistics){
+    void calculateAdvStatistics (Statistics statistics){
 
         int resultList1 = statistics
                 .usersNames().size();
-        numberOfUsers += resultList1;
+
 
 
         int resultList2 = statistics
                 .postsCount();
-        numberOfPosts += resultList2;
+
 
         int resultList3 = statistics
                 .commentsCount();
-        numberOfComments += resultList3;
-
-       averageNumberOfPostsPerUser = (numberOfPosts += resultList2) / (numberOfUsers += resultList1);
-       averageNumberOfCommentsPerUser = (numberOfComments += resultList3) / (numberOfUsers += resultList1);
-       averageNumberOfCommentsPerPost = (numberOfComments += resultList3) / (numberOfPosts += resultList2);
 
 
+       averageNumberOfPostsPerUser = (resultList2) / ( resultList1);
+       averageNumberOfCommentsPerUser = (resultList3) / ( resultList1);
+       averageNumberOfCommentsPerPost = ( resultList3) / ( resultList2);
 
 
-        return  numberOfUsers + ", " + numberOfPosts + ", " + numberOfComments +
-                ", " + averageNumberOfPostsPerUser + ", " + averageNumberOfCommentsPerUser +
-                ", " + averageNumberOfCommentsPerPost;
+
+
+
     }
 
     public Statistics getStatistics() {

@@ -73,6 +73,8 @@ public class StatisticsCounterTestSuite {
 
     }
 
+
+
     @Test
     void testListOfUsersEquals100() {
 

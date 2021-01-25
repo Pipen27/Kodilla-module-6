@@ -8,18 +8,18 @@ import java.util.stream.Collectors;
 public final class World {
 
     private final BigDecimal peopleQuantityWorld;
-    private final Set<Continent> world = new HashSet<>();
+    private final Set<Continent> worldList = new HashSet<>();
 
 
     public World(final BigDecimal peopleQuantityWorld) {
         this.peopleQuantityWorld = peopleQuantityWorld;
     }
 
-    public Set<Continent> getWorld(){return new HashSet<>(world);}
+    public Set<Continent> getWorld(){return new HashSet<>(worldList);}
 
     public  BigDecimal getPeopleQuantity(){
 
-        return world.stream()
+        return worldList.stream()
                 .map(continent -> continent.getContinents())
                 .flatMap(continent -> continent.stream())
                 .map(Country::getPeopleQuantity)

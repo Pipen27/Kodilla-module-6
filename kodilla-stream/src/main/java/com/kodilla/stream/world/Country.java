@@ -16,9 +16,7 @@ public final class Country {
 
     }
 
-    public void addCountry (Country country) {
-        countries.add(country);
-    }
+
 
     public String getCountryName() {
         return countryName;
@@ -33,7 +31,5 @@ public final class Country {
 
 
 
-    public Set<Country> getCountries() {
-        return countries;
-    }
+
 }

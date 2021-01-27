@@ -29,10 +29,18 @@ public class WorldTestSuite {
         continents.add(country2);
         continents.add(country3);
 
+        continent1.addCountry(country1);
+        continent1.addCountry(country2);
+        continent2.addCountry(country3);
+
+
         World world = new World(new BigDecimal("2999999997"));
         Set<Continent> worldList = new HashSet<>();
         worldList.add(continent1);
         worldList.add(continent2);
+
+        world.addContinent(continent1);
+        world.addContinent(continent2);
 
         //When
 

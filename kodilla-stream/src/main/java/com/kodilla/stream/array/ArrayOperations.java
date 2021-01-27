@@ -12,18 +12,9 @@ public interface ArrayOperations {
 
 
 
+return 0;
 
 
-              return      IntStream.range(0, numbers.length)
-
-
-                .map(n -> numbers[n])
-                .forEach(System.out::println);
-
-                 IntStream.range(0, numbers.length)
-                .map(n -> numbers[n])
-
-                .average(numbers);
     }
 }
 

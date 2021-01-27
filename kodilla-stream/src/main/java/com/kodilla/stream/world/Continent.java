@@ -16,6 +16,10 @@ public final class Continent {
         return continentName;
     }
 
+    public void addCountry(Country country) {
+        continents.add(country);
+    }
+
     public Set<Country> getContinents() {
         return  new HashSet<>(continents);
     }

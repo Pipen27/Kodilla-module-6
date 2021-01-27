@@ -17,6 +17,10 @@ public final class World {
 
     public Set<Continent> getWorld(){return new HashSet<>(worldList);}
 
+    public void addContinent(Continent continent) {
+        worldList.add(continent);
+    }
+
     public  BigDecimal getPeopleQuantity(){
 
         return worldList.stream()

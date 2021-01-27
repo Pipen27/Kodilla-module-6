@@ -8,7 +8,7 @@ public final class Country {
 
     private final String countryName;
     private final BigDecimal peopleQuantity;
-    private final Set<Country> countries = new HashSet<>();
+
 
     public Country(final String countryName, final BigDecimal peopleQuantity) {
         this.countryName = countryName;

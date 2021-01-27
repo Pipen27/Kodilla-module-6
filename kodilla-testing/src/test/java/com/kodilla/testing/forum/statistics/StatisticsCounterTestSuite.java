@@ -65,10 +65,10 @@ public class StatisticsCounterTestSuite {
         when(statisticsMock.usersNames()).thenReturn(resultListOfUsers);
 
         // When
-        List<String> theListOfUsers = statisticsCounter.usersNames(statisticsMock);
+        statisticsCounter.calculateAdvStatistics(statisticsMock);
 
         // Then
-        assertEquals(0, theListOfUsers.size());
+        assertEquals(0, statisticsCounter.getAverageNumberOfPostsPerUser());
 
 
     }

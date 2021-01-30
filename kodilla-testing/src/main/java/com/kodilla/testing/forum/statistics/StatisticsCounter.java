@@ -2,6 +2,7 @@ package com.kodilla.testing.forum.statistics;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.lang.ArithmeticException;
 
 public class StatisticsCounter {
 
@@ -22,6 +23,7 @@ public class StatisticsCounter {
         List<String> listOfUsers = new ArrayList<String>();
         List<String> resultList = statistics
                 .usersNames();
+
         listOfUsers = resultList;
 
 
@@ -29,7 +31,14 @@ public class StatisticsCounter {
 
 
     }
+    int usersCount(Statistics statistics){
+        int sumUsers = 0;
+        int resultList = statistics.
+                usersNames().size();
+        sumUsers += resultList;
 
+        return sumUsers;
+    }
 
     int postsCount(Statistics statistics){
         int sumPosts = 0;
@@ -60,7 +69,6 @@ public class StatisticsCounter {
                 .usersNames().size();
 
 
-
         int resultList2 = statistics
                 .postsCount();
 
@@ -69,11 +77,37 @@ public class StatisticsCounter {
                 .commentsCount();
 
 
-       averageNumberOfPostsPerUser = (resultList2) / ( resultList1);
-       averageNumberOfCommentsPerUser = (resultList3) / ( resultList1);
-       averageNumberOfCommentsPerPost = ( resultList3) / ( resultList2);
+        try{
 
+            averageNumberOfPostsPerUser = (resultList2) / ( resultList1);
 
+            if (averageNumberOfPostsPerUser == Double.POSITIVE_INFINITY){
+            throw new ArithmeticException("Not finite");}
+        }
+            catch (ArithmeticException e){
+                System.err.println("You can't divide by 0");
+            }
+
+        try{
+            averageNumberOfCommentsPerUser = (resultList3) / ( resultList1);
+
+            if (averageNumberOfCommentsPerUser == Double.POSITIVE_INFINITY){
+                throw new ArithmeticException("Not finite");}
+        }
+            catch (ArithmeticException e){
+                System.err.println("You can't divide by 0");
+            }
+        try{
+            averageNumberOfCommentsPerPost = ( resultList3) / ( resultList2);
+
+            if (averageNumberOfCommentsPerPost == Double.POSITIVE_INFINITY){
+                throw new ArithmeticException("Not finite");
+            }
+
+        }
+            catch (ArithmeticException e){
+        System.err.println("You can't divide by 0");
+            }
 
 
 
@@ -96,14 +130,35 @@ public class StatisticsCounter {
     }
 
     public double getAverageNumberOfPostsPerUser() {
-        return averageNumberOfPostsPerUser;
+
+
+             if (averageNumberOfPostsPerUser == Double.POSITIVE_INFINITY){
+                  throw new ArithmeticException("Not finite");
+
+
+             }
+             else
+             return averageNumberOfPostsPerUser;
+
     }
 
     public double getAverageNumberOfCommentsPerUser() {
-        return averageNumberOfCommentsPerUser;
+
+
+        if (averageNumberOfCommentsPerUser == Double.POSITIVE_INFINITY) {
+            throw new ArithmeticException("Not finite");
+        }
+        else
+            return averageNumberOfCommentsPerUser;
+
     }
 
     public double getAverageNumberOfCommentsPerPost() {
-        return averageNumberOfCommentsPerPost;
+
+        if (averageNumberOfCommentsPerPost == Double.POSITIVE_INFINITY){
+            throw new ArithmeticException("Not finite");}
+        else
+            return averageNumberOfCommentsPerPost;
+
     }
 }

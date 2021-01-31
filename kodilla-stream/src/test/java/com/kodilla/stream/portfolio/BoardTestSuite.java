@@ -176,16 +176,11 @@ public class BoardTestSuite {
 
         long average1 = days/countOfTasks;
 
-        int average = LongStream.rangeClosed(0,duringInProgressTasks.size())
-                .map(n->duringInProgressTasks.get(n).getTasks())
-                .map(n->n.getCreated)
-                .map(d -> Duration.between(yesterday.atStartOfDay(), LocalDate.now().atStartOfDay()))
-                .map(d->d.toDays())
-                .average();
+
 
 
         //Then
-        assertEquals(10, average1);
+        assertEquals(1, average1);
 
 
 

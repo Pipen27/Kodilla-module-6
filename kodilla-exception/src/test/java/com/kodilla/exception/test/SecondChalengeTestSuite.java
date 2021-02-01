@@ -17,9 +17,9 @@ public class SecondChalengeTestSuite {
 
 
         assertAll(
-                () -> assertThrows(ExceptionHandling.class, () -> secondChallenge.probablyIWillThrowException(2,0)),
-                () -> assertThrows(ExceptionHandling.class, () -> secondChallenge.probablyIWillThrowException(0.9,0)),
-                () -> assertThrows(ExceptionHandling.class, () -> secondChallenge.probablyIWillThrowException(1.1,1.5)),
+                () -> assertThrows(Exception.class, () -> secondChallenge.probablyIWillThrowException(2,0)),
+                () -> assertThrows(Exception.class, () -> secondChallenge.probablyIWillThrowException(0.9,0)),
+                () -> assertThrows(Exception.class, () -> secondChallenge.probablyIWillThrowException(1.1,1.5)),
                 () -> assertDoesNotThrow(() -> secondChallenge.probablyIWillThrowException(1.1, 4))
         );
     }

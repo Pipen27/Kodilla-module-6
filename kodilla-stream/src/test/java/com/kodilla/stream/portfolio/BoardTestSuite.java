@@ -6,6 +6,7 @@ import java.time.Duration;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.OptionalDouble;
 import java.util.stream.LongStream;
 
 import static java.util.stream.Collectors.toList;
@@ -133,17 +134,17 @@ public class BoardTestSuite {
         Board project = prepareTestData();
 
         //When
-        List<TaskList> inProgressTasks = new ArrayList<>();               // [1]
-        inProgressTasks.add(new TaskList("In progress"));                 // [2]
-        long longTasks = project.getTaskLists().stream()                  // [3]
-                .filter(inProgressTasks::contains)                             // [4]
-                .flatMap(tl -> tl.getTasks().stream())                         // [5]
-                .map(Task::getCreated)                                         // [6]
-                .filter(d -> d.compareTo(LocalDate.now().minusDays(10)) <= 0)  // [7]
-                .count();                                                      // [8]
+        List<TaskList> inProgressTasks = new ArrayList<>();
+        inProgressTasks.add(new TaskList("In progress"));
+        long longTasks = project.getTaskLists().stream()
+                .filter(inProgressTasks::contains)
+                .flatMap(tl -> tl.getTasks().stream())
+                .map(Task::getCreated)
+                .filter(d -> d.compareTo(LocalDate.now().minusDays(10)) <= 0)
+                .count();
 
         //Then
-        assertEquals(2, longTasks);                                       // [9]
+        assertEquals(2, longTasks);
     }
 
     @Test
@@ -151,9 +152,6 @@ public class BoardTestSuite {
 
         //Given
         Board project = prepareTestData();
-        LocalDate today = LocalDate.now();
-        LocalDate yesterday = LocalDate.parse("2021-01-30");
-
 
 
         //When
@@ -161,26 +159,25 @@ public class BoardTestSuite {
 
         duringInProgressTasks.add(new TaskList("In progress"));
 
-        long countOfTasks = project.getTaskLists().stream()
-                .filter(duringInProgressTasks::contains)
-                .flatMap(tl -> tl.getTasks().stream())
-                .count();
 
-        long days = project.getTaskLists().stream()
+
+        OptionalDouble days = project.getTaskLists().stream()
                 .filter(duringInProgressTasks::contains)
                 .flatMap(taskList -> taskList.getTasks().stream())
                 .map(Task::getCreated)
                 .map(d -> Duration.between(d.atStartOfDay(), LocalDate.now().atStartOfDay()))
                 .map(d-> d.toDays())
-                .count();
+                .mapToDouble(d->d)
+                .average();
 
-        long average1 = days/countOfTasks;
 
+        OptionalDouble expectedResult
+                = OptionalDouble.of(10);
 
 
 
         //Then
-        assertEquals(1, average1);
+        assertEquals(expectedResult, days);
 
 
 

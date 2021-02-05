@@ -2,18 +2,23 @@ package com.kodilla.exception.test;
 
 public class ExceptionHandling {
 
+    public ExceptionHandling(SecondChallenge secondChallenge) {
+        this.secondChallenge = secondChallenge;
+    }
+
     private SecondChallenge secondChallenge;
 
 
-    public String exceptionHandling() {
+    public String exceptionHandling(double x, double y) throws Exception {
         try {
-            return secondChallenge.probablyIWillThrowException(1, 1);
+             secondChallenge.probablyIWillThrowException(x, y);
+
         } catch (Exception exception) {
-            System.out.println("Incompatible counts. " +
-                    "\nSet x greater than 1 and smaller or equals 2 or set y different from 1.5");
+            throw new Exception();
+
 
         } finally {
-            System.out.println("Done");
+            System.out.println("Exception Handling Done");
         }
         return "Done!";
 

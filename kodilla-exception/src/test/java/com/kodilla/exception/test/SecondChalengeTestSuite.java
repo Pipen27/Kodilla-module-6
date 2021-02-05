@@ -23,4 +23,22 @@ public class SecondChalengeTestSuite {
                 () -> assertDoesNotThrow(() -> secondChallenge.probablyIWillThrowException(1.1, 4))
         );
     }
+
+    @Test
+    void testExceptionHandling() {
+
+        // given
+        SecondChallenge secondChallenge = new SecondChallenge();
+        ExceptionHandling exceptionHandling = new ExceptionHandling(secondChallenge);
+        // when & then
+
+
+        assertAll(
+                () -> assertThrows(Exception.class, () -> exceptionHandling.exceptionHandling(2,0)),
+                () -> assertThrows(Exception.class, () -> exceptionHandling.exceptionHandling(0.9,0)),
+                () -> assertThrows(Exception.class, () -> exceptionHandling.exceptionHandling(1.1,1.5)),
+                () -> assertDoesNotThrow(() -> exceptionHandling.exceptionHandling(1.1, 4))
+        );
+    }
 }
+

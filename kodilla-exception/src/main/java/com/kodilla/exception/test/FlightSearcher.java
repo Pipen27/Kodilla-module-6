@@ -13,9 +13,7 @@ public class FlightSearcher {
         flights.put("Berlin", false);
 
 
-
-
-        if(flights.getOrDefault(flight.getArrivalAirport(),true) ) {
+        if(flights.getOrDefault(flight.getArrivalAirport(),true) && flights.containsKey(flight.getArrivalAirport())) {
             System.out.println("Flight is founded");
         } else {
             throw new RouteNotFoundException("Flight is not possible to reach");

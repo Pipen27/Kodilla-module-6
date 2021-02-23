@@ -12,13 +12,14 @@ public class FlightSearcher {
         flights.put("Madrid", true);
         flights.put("Berlin", false);
 
-        for(Map.Entry<String, Boolean> entry : flights.entrySet()){
-        if(entry.getKey().equals(flight.getArrivalAirport()) && entry.getValue() == true) {
+
+
+
+        if(flights.getOrDefault(flight.getArrivalAirport(),true) ) {
             System.out.println("Flight is founded");
-        }else
-         {
+        } else {
             throw new RouteNotFoundException("Flight is not possible to reach");
-        }}
-    return true;
-    }
+        }
+
+        return true;}
 }

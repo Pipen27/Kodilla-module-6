@@ -158,12 +158,12 @@ public class Option {
 
             int userChoice = scanner.nextInt();
             switch (userChoice) {
-                case 1 -> chooseRock() ;
-                case 2 -> choosePaper();
-                case 3 -> chooseScissors();
-                case 4 -> endGame();
-                case 5 -> newGame();
-                default -> System.out.println("Wybrano niepoprawną wartość, wybierz liczbę od 1 do 5");
+                case 1 : chooseRock() ;
+                case 2 : choosePaper();
+                case 3 : chooseScissors();
+                case 4 : endGame();
+                case 5 : newGame();
+                default : System.out.println("Wybrano niepoprawną wartość, wybierz liczbę od 1 do 5");
 
             }
 
@@ -184,9 +184,9 @@ public class Option {
 
             String userChoice1 = scanner.nextLine();
             switch (userChoice1) {
-                case "x" -> endGame();
-                case "n" -> newGame();
-                default -> System.out.println("Wybrano niepoprawną wartość, naciśnij x lub n");
+                case "x" : endGame();
+                case "n" : newGame();
+                default : System.out.println("Wybrano niepoprawną wartość, naciśnij x lub n");
             }
         } else if (compWinCounter == numberOfWin && numberOfWin !=0) {
 
@@ -196,9 +196,9 @@ public class Option {
 
             String userChoice1 = scanner.nextLine();
             switch (userChoice1) {
-                case "x" -> endGame();
-                case "n" -> newGame();
-                default -> System.out.println("Wybrano niepoprawną wartość, naciśnij x lub n");
+                case "x" : endGame();
+                case "n" : newGame();
+                default : System.out.println("Wybrano niepoprawną wartość, naciśnij x lub n");
             }
         } else {}
 

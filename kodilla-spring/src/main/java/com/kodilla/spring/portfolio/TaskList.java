@@ -17,9 +17,4 @@ public class TaskList {
         return tasks;
     }
 
-    public String  addTask(String taskName) {
-       tasks.add(taskName);
-       return  taskName;
-
-    }
 }

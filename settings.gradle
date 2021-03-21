@@ -7,4 +7,5 @@ include 'kodilla-rps'
 include 'kodilla-spring'
 include 'kodilla-spring-intro'
 include 'kodilla-spring-web'
+include 'kodilla-patterns'
 

@@ -12,12 +12,13 @@ public class LoggerTestSuite {
     @Test
     void testGetLastLog() {
         //Given
-        logger.log("Test1");
-        logger.log("test2");
+        Logger.INSTANCE.log("Test1");
+        Logger.INSTANCE.log("test2");
+        Logger.INSTANCE.log("Test2");
         //When
-        String lastLogTest = logger.getLastLog();
+        String lastLogTest = Logger.INSTANCE.getLastLog();
         System.out.println("Last log: " + lastLogTest);
         //Then
-        assertEquals("test2", lastLogTest);
+        assertEquals("Test2", lastLogTest);
     }
 }

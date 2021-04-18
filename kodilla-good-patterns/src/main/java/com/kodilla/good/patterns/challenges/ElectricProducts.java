@@ -7,13 +7,11 @@ class ElectricProducts implements ListsOfProducts {
 
     public List <ProductDescriber> electricProductsList = new ArrayList<>();
 
+
     public void addProduct(ProductDescriber productDescriber) {
       electricProductsList.add(productDescriber);
 
     }
 
-    @Override
-    public void addProduct() {
 
-    }
 }

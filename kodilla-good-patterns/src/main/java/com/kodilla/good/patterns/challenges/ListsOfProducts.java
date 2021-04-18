@@ -5,9 +5,9 @@ import java.util.List;
 
 public interface ListsOfProducts {
 
- List<String> listOfProducts = new ArrayList<>();
+  List<String> listOfProducts = new ArrayList<>();
 
-void addProduct();
+  void addProduct(ProductDescriber productDescriber);
 
 
 }

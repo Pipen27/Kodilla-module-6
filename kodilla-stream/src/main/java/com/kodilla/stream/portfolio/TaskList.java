@@ -43,6 +43,7 @@ public final class TaskList {
         if (!(o instanceof TaskList)) return false;
         TaskList taskList = (TaskList) o;
         return name.equals(taskList.name);
+
     }
 
 

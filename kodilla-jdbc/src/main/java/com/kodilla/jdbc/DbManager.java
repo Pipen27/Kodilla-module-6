@@ -29,7 +29,7 @@ public class DbManager {
 
     public Connection getConnection() {                               // [18]
         return conn;                                                   // [19]
-    }                                                                 // [20]
+    }// [20]
 }
 
 

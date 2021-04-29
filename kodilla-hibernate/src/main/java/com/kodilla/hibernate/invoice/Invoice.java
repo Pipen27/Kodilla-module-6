@@ -12,7 +12,7 @@ public class Invoice {
     private int id;
     private String number;
     private List<Item> items = new ArrayList<>();
-    private Item item;
+
 
     public Invoice() {
     }
@@ -45,6 +45,13 @@ public class Invoice {
         this.number = number;
     }
 
+    @OneToMany(
+            targetEntity = Item.class,
+            mappedBy = "invoice",
+            fetch = FetchType.EAGER,
+            cascade = CascadeType.ALL
+    )
+
     @NotNull
     @Column(name = "ITEMS")
     public List<Item> getItems() {
@@ -55,13 +62,5 @@ public class Invoice {
         this.items = items;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "ITEM_ID")
-    public Item getItem() {
-        return item;
-    }
 
-    public void setItem(Item item) {
-        this.item = item;
-    }
 }

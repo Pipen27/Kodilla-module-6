@@ -15,8 +15,7 @@ public class Item {
     private BigDecimal price;
     private int quantity;
     private BigDecimal value;
-    private List<Product> products = new ArrayList<>();
-    private List<Invoice> invoices = new ArrayList<>();
+    private Invoice invoice;
 
     public Item() {
     }
@@ -40,8 +39,9 @@ public class Item {
         this.id = id;
     }
 
-    @NotNull
-    @Column(name = "PRODUCT")
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "PRODUCT_ID")
+
     public Product getProduct() {
         return product;
     }
@@ -80,31 +80,14 @@ public class Item {
         this.value = value;
     }
 
-    @OneToMany(
-            targetEntity = Product.class,
-            mappedBy = "item",
-            cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY
-    )
-    public List<Product> getProducts() {
-        return products;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "INVOICE_ID")
+    public Invoice getInvoice() {
+        return invoice;
     }
 
-    private void setProducts(List<Product> products) {
-        this.products = products;
-    }
-
-    @OneToMany(
-            targetEntity = Invoice.class,
-            mappedBy = "item",
-            cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY
-    )
-    public List<Invoice> getInvoices() {
-        return invoices;
-    }
-
-    private void setInvoices(List<Invoice> invoices) {
-        this.invoices = invoices;
+    public void setInvoice(Invoice invoice) {
+        this.invoice = invoice;
     }
 }

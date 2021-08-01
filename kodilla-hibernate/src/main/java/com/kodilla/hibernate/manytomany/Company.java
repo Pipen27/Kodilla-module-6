@@ -8,13 +8,23 @@ import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-@NamedNativeQuery(
-        name = "Company.retrieveCompanyWithFirstThreeSpecificSigns",
-        query = "SELECT * FROM COMPANIES" +
-                " WHERE SUBSTR(COMPANY_NAME, 1, 3) = :FIRST_THREE_SIGNS",
+@NamedNativeQueries({
+        @NamedNativeQuery(
+                name = "Company.retrieveCompanyWithFirstThreeSpecificSigns",
+                query = "SELECT * FROM COMPANIES" +
+                        " WHERE SUBSTR(COMPANY_NAME, 1, 3) = :FIRST_THREE_SIGNS",
 
-        resultClass = Company.class
-)
+                resultClass = Company.class
+        ),
+        @NamedNativeQuery(
+                name = "Company.retrieveCompanyWithInsertedSigns",
+                query = "SELECT * FROM COMPANIES" +
+                        " WHERE COMPANY_NAME LIKE :INSERTED_SIGNS",
+
+                resultClass = Company.class
+        )
+
+})
 @Entity
 @Table(name = "COMPANIES")
 public class Company {

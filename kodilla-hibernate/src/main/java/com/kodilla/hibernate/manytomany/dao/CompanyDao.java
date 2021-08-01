@@ -17,4 +17,6 @@ public interface CompanyDao extends CrudRepository<Company, Integer> {
     @Query
     List<Company> retrieveCompanyWithFirstThreeSpecificSigns (@Param("FIRST_THREE_SIGNS") String firstThreeSigns);
 
+    @Query
+    List<Company> retrieveCompanyWithInsertedSigns (@Param("INSERTED_SIGNS") String insertedSigns);
 }

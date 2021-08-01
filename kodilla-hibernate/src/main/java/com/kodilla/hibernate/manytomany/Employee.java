@@ -5,11 +5,18 @@ import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-
-@NamedQuery(
+@NamedQueries({
+        @NamedQuery(
         name = "Employee.retrieveEmployeesWithSpecificLastname",
         query = "FROM Employee WHERE lastname = :LASTNAME"
-)
+        ),
+        @NamedQuery(
+                name = "Employee.retrieveEmployeeWithInsertedSigns",
+                query = "FROM Employee WHERE lastname LIKE :INSERTED_SIGNS"
+        )
+
+})
+
 @Entity
 @Table(name = "EMPLOYEES")
 public class Employee {

@@ -81,7 +81,7 @@ public class CompanyDaoTestSuite {
         companyDao.save(softwareMachine);
         int id1 = softwareMachine.getId();
         companyDao.save(dataMaesters);
-        int id2 = dataMaesters.getId(); 
+        int id2 = dataMaesters.getId();
         companyDao.save(greyMatter);
         int id3 = greyMatter.getId();
 

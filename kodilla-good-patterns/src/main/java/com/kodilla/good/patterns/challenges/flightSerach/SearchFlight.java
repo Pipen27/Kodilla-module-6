@@ -1,52 +1,40 @@
 package com.kodilla.good.patterns.challenges.flightSerach;
 
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class SearchFlight {
 
-    public FlightList searchFlightFrom(User user, FlightList flightList)
+    public Map<Integer, Airport> searchFlightFrom(User user, FlightList flightList)
     {
-        flightList.getFlightList().entrySet().stream()
-                .map(e -> e.getValue())
-                .filter(e -> e.getDepartureAirport().equals(user.getAirport().getDepartureAirport().toUpperCase()))
-                .map(e -> "Departure from: " + e.getDepartureAirport() + " ---> " + "Arrival to: " + e.getArrivalAirport())
-                .collect(Collectors.toList())
-                .forEach(System.out::println);
-        System.out.println();
-            return flightList;
+
+        Map<Integer, Airport> collectFrom = flightList.getFlightList().entrySet().stream()
+                .filter(e -> e.getValue().getDepartureAirport().equals(user.getAirport().getDepartureAirport().toUpperCase()))
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+
+        return collectFrom;
+
 
     }
 
-    public FlightList searchFlightTo(User user, FlightList flightList)
+    public Map<Integer, Airport> searchFlightTo(User user, FlightList flightList)
     {
-        flightList.getFlightList().entrySet().stream()
-                .map(e -> e.getValue())
-                .filter(e -> e.getArrivalAirport().equals(user.getAirport().getArrivalAirport().toUpperCase()))
-                .map(e -> "Arrival to: " + e.getArrivalAirport() + " <--- " + "Departure from: " + e.getDepartureAirport())
-                .collect(Collectors.toList())
-                .forEach(System.out::println);
-        System.out.println();
-            return flightList;
+        Map<Integer, Airport> collectTo = flightList.getFlightList().entrySet().stream()
+                .filter(e -> e.getValue().getArrivalAirport().equals(user.getAirport().getArrivalAirport().toUpperCase()))
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+
+        return collectTo;
     }
 
-    public FlightList searchOneStopFlight(User user, FlightList flightList)
-    {
-        flightList.getFlightList().entrySet().stream()
-                .map(e -> e.getValue())
-                .filter(e -> e.getDepartureAirport().equals(user.getAirport().getDepartureAirport().toUpperCase()) && e.getArrivalAirport()
+    public Map<Integer, Airport> searchOneStopFlight(User user, FlightList flightList) {
+
+
+        Map<Integer, Airport> collectOneStop = flightList.getFlightList().entrySet().stream()
+                .filter(e -> e.getValue().getDepartureAirport().equals(user.getAirport().getDepartureAirport().toUpperCase()) && e.getValue().getArrivalAirport()
                         .equals(user.getOneStopConnection().toUpperCase()))
-                .map(e -> "Departure from: " + e.getDepartureAirport() + " ---> " + "Arrival to (One stop Airport): " + e.getArrivalAirport())
-                .collect(Collectors.toList())
-                .forEach(System.out::println);
+                .filter(e -> e.getValue().getDepartureAirport().equals(user.getOneStopConnection().toUpperCase()) && e.getValue().getArrivalAirport().equals(user.getAirport().getArrivalAirport().toUpperCase()))
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
-        flightList.getFlightList().entrySet().stream()
-                .map(e -> e.getValue())
-                .filter(e -> e.getDepartureAirport().equals(user.getOneStopConnection().toUpperCase()) && e.getArrivalAirport().equals(user.getAirport().getArrivalAirport().toUpperCase()))
-                .map(e -> "Departure from (One stop Airport): " + e.getDepartureAirport() + " ---> " + "Arrival to: " + e.getArrivalAirport())
-                .collect(Collectors.toList())
-                .forEach(System.out::println);
-
-        System.out.println();
-            return flightList;
+            return collectOneStop;
     }
 }
